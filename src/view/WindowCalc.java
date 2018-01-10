@@ -239,7 +239,7 @@ public class WindowCalc extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (!calc.getMathExpression().equals("")) { // 之后当表达式中有值时才会执行，删去最后面的一个字符
 					calc.backMathExpression();
-					input.setText(calc.getMathExpression());
+					input.setText(input.getText().substring(0, input.getText().length() - 1));
 				}
 			}
 		});
@@ -489,8 +489,10 @@ public class WindowCalc extends JFrame {
 		}
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calc.backMathExpression();
-				input.setText(calc.getMathExpression());
+				if (!calc.getMathExpression().equals("")) {
+					calc.backMathExpression();
+					input.setText(input.getText().substring(0, input.getText().length() - 1));
+				}
 			}
 		});
 		ceButton.addActionListener(new ActionListener() {
